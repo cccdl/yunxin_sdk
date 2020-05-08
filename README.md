@@ -25,7 +25,7 @@ $ composer require cccdl/yunxin_sdk
 
 
 ### 快速使用
-在您开始之前，您需要注册腾讯云并获取您的[凭证](https://console.cloud.tencent.com)。
+在您开始之前，您需要注册网易云信并获取您的[凭证](https://dev.yunxin.163.com)。
 
 
 ```php
