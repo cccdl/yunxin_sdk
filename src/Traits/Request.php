@@ -19,13 +19,13 @@ trait Request
             'timeout' => self::$timeout,
             'headers' => [
                 'AppKey' => $this->AppKey,
-                'Nonce' => $this->AppSecret,
+                'Nonce' => $this->Nonce,
                 'CurTime' => $time,
                 'CheckSum' => sha1($this->AppSecret . $this->Nonce . $time),
             ]
         ]);
 
-        $response = $client->post($url, $param);
+        $response = $client->post($url, ['form_params' => $param]);
 
         if ($response->getStatusCode() != 200) {
             throw new cccdlException('请求失败: ' . $response->getStatusCode());
