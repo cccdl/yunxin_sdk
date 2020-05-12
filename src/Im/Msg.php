@@ -165,7 +165,7 @@ class Msg extends Base
      */
     public function sendBatchAttachMsg(string $fromAccid, array $toAccids, string $attach, array $options = [])
     {
-        $this->post('msg/sendAttachMsg.action', array_merge($options, [
+        $this->post('msg/sendBatchAttachMsg.action', array_merge($options, [
             'fromAccid' => $fromAccid,
             'toAccids' => json_encode($toAccids),
             'attach' => $attach,
