@@ -23,7 +23,7 @@ class Friend extends Base
      */
     public function add($accid, $faccid, $type, $msg = '', $serverex = '')
     {
-        $this->post('friend/add.action', [
+        return $this->post('friend/add.action', [
             'accid' => $accid,
             'faccid' => $faccid,
             'type' => $type,
@@ -45,7 +45,7 @@ class Friend extends Base
      */
     public function update($accid, $faccid, $alias = '', $ex = '', $serverex = '')
     {
-        $this->post('friend/update.action', [
+        return $this->post('friend/update.action', [
             'accid' => $accid,
             'faccid' => $faccid,
             'alias' => $alias,
@@ -65,7 +65,7 @@ class Friend extends Base
      */
     public function delete(string $accid, string $faccid, $isDeleteAlias = false)
     {
-        $this->post('friend/delete.action', [
+        return $this->post('friend/delete.action', [
             'accid' => $accid,
             'faccid' => $faccid,
             'isDeleteAlias' => $isDeleteAlias,
@@ -84,8 +84,7 @@ class Friend extends Base
      */
     public function get(string $accid, int $updatetime)
     {
-        $ret = $this->post('friend/get.action', ['accid' => $accid, 'updatetime' => $updatetime]);
-        return $ret['friends'];
+        return $this->post('friend/get.action', ['accid' => $accid, 'updatetime' => $updatetime]);
     }
 
     /**
@@ -101,7 +100,7 @@ class Friend extends Base
      */
     public function setSpecialRelation(string $accid, string $targetAcc, int $relationType, int $value)
     {
-        $this->post('user/setSpecialRelation.action', [
+        return $this->post('user/setSpecialRelation.action', [
             'accid' => $accid,
             'targetAcc' => $targetAcc,
             'relationType' => $relationType,
