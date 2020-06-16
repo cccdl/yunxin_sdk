@@ -123,9 +123,7 @@ class Msg extends Base
             $data['pushcontent'] = $pushcontent;
         }
 
-        $ret = $this->post('msg/sendBatchMsg.action', array_merge($options, $data));
-
-        return $ret['data'];
+        return $this->post('msg/sendBatchMsg.action', array_merge($options, $data));
     }
 
     /**
