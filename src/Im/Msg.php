@@ -59,7 +59,7 @@ class Msg extends Base
      * @return array
      * @throws cccdlException
      */
-    public function sendMsg(string $from, int $ope, string $to, int $type, string $body, array $options = [], string $pushcontent = ''): array
+    public function sendMsg(string $from, int $ope, string $to, int $type, string $body, array $options = [], string $pushcontent = '')
     {
         $data = [
             'from' => $from,
@@ -107,16 +107,23 @@ class Msg extends Base
      * - useYidun: int, 单条消息是否使用易盾反垃圾，可选值为0。0：（在开通易盾的情况下）不使用易盾反垃圾而是使用通用反垃圾，包括自定义消息。
      *   若不填此字段，即在默认情况下，若应用开通了易盾反垃圾功能，则使用易盾反垃圾来进行垃圾消息的判断
      *
-     * @throws Exception
+     * @param string $pushcontent
+     * @throws cccdlException
      */
-    public function sendBatchMsg(string $fromAccid, array $toAccids, int $type, string $body, array $options = [])
+    public function sendBatchMsg(string $fromAccid, array $toAccids, int $type, string $body, array $options = [], string $pushcontent = '')
     {
-        $this->post('msg/sendBatchMsg.action', array_merge($options, [
+        $data = [
             'fromAccid' => $fromAccid,
             'toAccids' => json_encode($toAccids),
             'type' => $type,
             'body' => $body,
-        ]));
+        ];
+
+        if (!empty($pushcontent)) {
+            $data['pushcontent'] = $pushcontent;
+        }
+
+        $this->post('msg/sendBatchMsg.action', array_merge($options, $data));
     }
 
     /**
