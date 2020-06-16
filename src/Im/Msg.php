@@ -3,6 +3,7 @@
 namespace cccdl\yunxin_sdk\Im;
 
 
+use cccdl\yunxin_sdk\Exception\cccdlException;
 use Exception;
 
 /**
@@ -54,18 +55,25 @@ class Msg extends Base
      *
      * - checkFriend: bool, 是否为好友关系才发送消息，默认false，注：使用该参数需要先开通功能服务
      *
+     * @param string $pushcontent 推送文案,最长500个字符,为空则不推送，写入内容则推送
      * @return array
-     * @throws Exception
+     * @throws cccdlException
      */
-    public function sendMsg(string $from, int $ope, string $to, int $type, string $body, array $options = [])
+    public function sendMsg(string $from, int $ope, string $to, int $type, string $body, array $options = [], string $pushcontent = ''): string
     {
-        $ret = $this->post('msg/sendMsg.action', array_merge($options, [
+        $data = [
             'from' => $from,
             'ope' => $ope,
             'to' => $to,
             'type' => $type,
             'body' => $body,
-        ]));
+        ];
+
+        if (!empty($pushcontent)) {
+            $data['pushcontent'] = $pushcontent;
+        }
+
+        $ret = $this->post('msg/sendMsg.action', array_merge($options, $data));
 
         /**
          *  "data":{
