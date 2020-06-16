@@ -40,9 +40,8 @@ class User extends Base
      */
     public function create(string $accid, array $options)
     {
-        $ret = $this->post('user/create.action', array_merge($options, ['accid' => $accid]));
+        return $this->post('user/create.action', array_merge($options, ['accid' => $accid]));
 
-        return $ret['info'];
     }
 
 
@@ -117,7 +116,7 @@ class User extends Base
      */
     public function updateUserInfo(string $accid, array $options)
     {
-        $this->post('user/updateUinfo.action', array_merge($options, ['accid' => $accid]));
+        return $this->post('user/updateUinfo.action', array_merge($options, ['accid' => $accid]));
     }
 
     /**
