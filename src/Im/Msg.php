@@ -59,7 +59,7 @@ class Msg extends Base
      * @return array
      * @throws cccdlException
      */
-    public function sendMsg(string $from, int $ope, string $to, int $type, string $body, array $options = [], string $pushcontent = ''): string
+    public function sendMsg(string $from, int $ope, string $to, int $type, string $body, array $options = [], string $pushcontent = ''): array
     {
         $data = [
             'from' => $from,
