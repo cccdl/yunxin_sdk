@@ -119,10 +119,6 @@ class Friend extends Base
      */
     public function listBlackAndMuteList(string $accid)
     {
-        $res = $this->post('user/listBlackAndMuteList.action', ['accid' => $accid]);
-        return [
-            'mutelist' => $res['mutelist'], //被静音的帐号列表
-            'blacklist' => $res['blacklist'] //加黑的帐号列表
-        ];
+        return $this->post('user/listBlackAndMuteList.action', ['accid' => $accid]);
     }
 }

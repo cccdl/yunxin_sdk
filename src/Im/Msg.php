@@ -73,16 +73,8 @@ class Msg extends Base
             $data['pushcontent'] = $pushcontent;
         }
 
-        $ret = $this->post('msg/sendMsg.action', array_merge($options, $data));
+        return $this->post('msg/sendMsg.action', array_merge($options, $data));
 
-        /**
-         *  "data":{
-         *    "msgid":1200510468189,
-         *    "timetag": 1545635366312,//消息发送的时间戳，注意是13位数毫秒时间戳
-         *    "antispam":false
-         *   }
-         */
-        return $ret['data'];
     }
 
     /**
@@ -149,7 +141,7 @@ class Msg extends Base
      */
     public function sendAttachMsg(string $from, int $msgtype, string $to, string $attach, array $options = [])
     {
-        $this->post('msg/sendAttachMsg.action', array_merge($options, [
+        return $this->post('msg/sendAttachMsg.action', array_merge($options, [
             'from' => $from,
             'msgtype' => $msgtype,
             'to' => $to,
@@ -180,7 +172,7 @@ class Msg extends Base
      */
     public function sendBatchAttachMsg(string $fromAccid, array $toAccids, string $attach, array $options = [])
     {
-        $this->post('msg/sendBatchAttachMsg.action', array_merge($options, [
+        return $this->post('msg/sendBatchAttachMsg.action', array_merge($options, [
             'fromAccid' => $fromAccid,
             'toAccids' => json_encode($toAccids),
             'attach' => $attach,
@@ -206,7 +198,7 @@ class Msg extends Base
      */
     public function broadcastMsg(string $body, array $options = [])
     {
-        $this->post('msg/broadcastMsg.action', array_merge($options, ['body' => $body]));
+        return $this->post('msg/broadcastMsg.action', array_merge($options, ['body' => $body]));
     }
 
 

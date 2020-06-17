@@ -55,7 +55,7 @@ class User extends Base
      */
     public function update(string $accid, string $token)
     {
-        $this->post('user/update.action', ['accid' => $accid, 'token' => $token]);
+       return $this->post('user/update.action', ['accid' => $accid, 'token' => $token]);
     }
 
 
@@ -74,7 +74,7 @@ class User extends Base
      */
     public function block(string $accid, bool $needkick = true)
     {
-        $this->post('user/block.action', ['accid' => $accid, 'needkick' => $needkick]);
+        return $this->post('user/block.action', ['accid' => $accid, 'needkick' => $needkick]);
     }
 
 
@@ -87,7 +87,7 @@ class User extends Base
      */
     public function unblock(string $accid)
     {
-        $this->post('user/unblock.action', ['accid' => $accid]);
+        return $this->post('user/unblock.action', ['accid' => $accid]);
     }
 
     /**
@@ -129,8 +129,7 @@ class User extends Base
      */
     public function getUserInfos(array $accids)
     {
-        $ret = $this->post('user/getUinfos.action', ['accids' => json_encode($accids)]);
-        return $ret['uinfos'];
+        return $this->post('user/getUinfos.action', ['accids' => json_encode($accids)]);
     }
 
 
@@ -144,7 +143,7 @@ class User extends Base
      */
     public function setDonnop(string $accid, bool $donnopOpen)
     {
-        $this->post('user/setDonnop.action', ['accid' => $accid, 'donnopOpen' => $donnopOpen]);
+        return $this->post('user/setDonnop.action', ['accid' => $accid, 'donnopOpen' => $donnopOpen]);
     }
 
 
@@ -158,7 +157,7 @@ class User extends Base
      */
     public function mute(string $accid, bool $mute)
     {
-        $this->post('user/mute.action', ['accid' => $accid, 'mute' => $mute]);
+        return $this->post('user/mute.action', ['accid' => $accid, 'mute' => $mute]);
     }
 
 
@@ -172,7 +171,7 @@ class User extends Base
      */
     public function muteAv(string $accid, bool $mute)
     {
-        $this->post('user/muteAv.action', ['accid' => $accid, 'mute' => $mute]);
+        return $this->post('user/muteAv.action', ['accid' => $accid, 'mute' => $mute]);
     }
 
 }
