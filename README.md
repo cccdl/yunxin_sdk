@@ -1,4 +1,4 @@
-#  网易云信 SDK for PHP  ![](https://id.163yun.com/res/images/logo@2x.png)
+#  网易云信 SDK for PHP  !
 ###### 由于官方没有提供，自己开发一个
 
 ### 主要新特性
