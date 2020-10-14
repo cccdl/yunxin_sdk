@@ -28,10 +28,19 @@ class CallBack extends Base
 
     public function notify()
     {
-        if ($this->header['CheckSum'] != sha1($this->AppSecret . $this->header['MD5'] . $this->header['CurTime'])) {
+
+        if(empty($this->header)){
+            throw new cccdlNotiftException('header is empty');
+        }
+
+        if ($this->header['checksum'] != sha1($this->AppSecret . $this->header['md5'] . $this->header['curtime'])) {
             throw new cccdlNotiftException('signature verification failed');
         }
-        return $_POST;
+
+        $data = json_decode(file_get_contents ( "php://input"),true);
+
+
+        return $data;
     }
 
     /**
