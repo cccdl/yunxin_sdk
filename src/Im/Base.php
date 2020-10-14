@@ -24,7 +24,7 @@ class Base
      * 密钥
      * @var
      */
-    private $AppSecret;
+    protected $AppSecret;
 
     /**
      * 随机数（最大长度128个字符）
@@ -85,6 +85,8 @@ class Base
 
         return $data;
     }
+
+
 
 
 }
