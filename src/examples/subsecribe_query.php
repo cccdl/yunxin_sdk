@@ -7,7 +7,7 @@ use cccdl\yunxin_sdk\Im\Subscribe;
 
 $im = new Subscribe($appId, $key);
 
-$add = $im->query('21', ['46511']);
+$add = $im->query(28, ['38']);
 
 var_dump($add);
 die;

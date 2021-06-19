@@ -7,7 +7,7 @@ use cccdl\yunxin_sdk\Im\Subscribe;
 
 $im = new Subscribe($appId, $key);
 
-$add = $im->batchDel('21');
+$add = $im->batchDel('28');
 
 var_dump($add);
 die;
