@@ -14,6 +14,7 @@ class CallBack extends Base
 {
 
     /**
+     * 请求头信息
      * @var array
      */
     private $header;
@@ -26,6 +27,9 @@ class CallBack extends Base
         $this->header = $this->getHeader();
     }
 
+    /**
+     * @throws cccdlNotiftException
+     */
     public function notify()
     {
 
@@ -37,16 +41,13 @@ class CallBack extends Base
             throw new cccdlNotiftException('signature verification failed');
         }
 
-        $data = json_decode(file_get_contents ( "php://input"),true);
-
-
-        return $data;
+        return json_decode(file_get_contents ( "php://input"),true);
     }
 
     /**
      * 获取头部信息
      */
-    public function getHeader()
+    public function getHeader(): array
     {
         $server = $_SERVER;
         $header = [];

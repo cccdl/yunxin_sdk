@@ -51,7 +51,7 @@ class Base
      * @param int $length 位数
      * @return string
      */
-    private function getNonce($length = 128)
+    private function getNonce(int $length = 128): string
     {
         // 密码字符集，可任意添加你需要的字符
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -73,7 +73,7 @@ class Base
      *
      * @return array
      */
-    private function bool2String(array $data)
+    private function bool2String(array $data): array
     {
         foreach ($data as &$datum) {
             if (is_bool($datum)) {

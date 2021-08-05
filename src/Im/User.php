@@ -3,7 +3,9 @@
 namespace cccdl\yunxin_sdk\Im;
 
 
+use cccdl\yunxin_sdk\Exception\cccdlException;
 use Exception;
+use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * 用户管理
@@ -15,7 +17,7 @@ class User extends Base
      *
      * @param string $accid 网易云通信ID，最大长度32字符，必须保证一个APP内唯一。
      * （只允许字母、数字、半角下划线_、@、半角点以及半角-组成，不区分大小写，会统一小写处理，请注意以此接口返回结果中的accid为准）
-     * @param array $options 可选参数集合，支持如下：
+     * @param array  $options 可选参数集合，支持如下：
      *
      * - name: string, 网易云通信ID昵称，最大长度64字符。
      *
@@ -36,9 +38,10 @@ class User extends Base
      * - ex: string, 用户名片扩展字段，最大长度1024字符，用户可自行扩展，建议封装成JSON字符串
      *
      * @return array 内容 ["token"=>"xx","accid"=>"xx","name"=>"xx"]
-     * @throws Exception
+     * @throws GuzzleException
+     * @throws cccdlException
      */
-    public function create(string $accid, array $options)
+    public function create(string $accid, array $options): array
     {
         return $this->post('user/create.action', array_merge($options, ['accid' => $accid]));
 
@@ -47,11 +50,11 @@ class User extends Base
 
     /**
      * 更新网易云通信token，可以对accid更新到指定的token，更新后请开发者务必做好本地的维护
-     *
      * @param string $accid 网易云通信ID，最大长度32字符，必须保证一个APP内唯一
      * @param string $token 网易云通信ID可以指定登录token值（即密码），最大长度128字符
-     *
-     * @throws Exception
+     * @return mixed
+     * @throws GuzzleException
+     * @throws cccdlException
      */
     public function update(string $accid, string $token)
     {
@@ -68,9 +71,11 @@ class User extends Base
      * - 出于安全目的，账号创建后只能封禁，不能删除；封禁后账号仍计入应用内账号总数。
      *
      * @param string $accid 网易云通信ID，最大长度32字符，必须保证一个APP内唯一
-     * @param bool $needkick 是否踢掉被禁用户，true或false
+     * @param bool   $needkick 是否踢掉被禁用户，true或false
      *
-     * @throws Exception
+     * @return mixed
+     * @throws GuzzleException
+     * @throws cccdlException
      */
     public function block(string $accid, bool $needkick = true)
     {
@@ -82,8 +87,9 @@ class User extends Base
      * 解禁网易云通信ID
      *
      * @param string $accid 网易云通信ID，最大长度32字符，必须保证一个APP内唯一
-     *
-     * @throws Exception
+     * @return mixed
+     * @throws GuzzleException
+     * @throws cccdlException
      */
     public function unblock(string $accid)
     {
@@ -94,7 +100,7 @@ class User extends Base
      * 更新用户名片
      *
      * @param string $accid 用户帐号，最大长度32字符，必须保证一个APP内唯一
-     * @param array $options 可选参数集合，支持参数如下：
+     * @param array  $options 可选参数集合，支持参数如下：
      *
      * - name: string, 网易云通信ID昵称，最大长度64字符。
      *
@@ -112,7 +118,9 @@ class User extends Base
      *
      * - ex: string, 用户名片扩展字段，最大长度1024字符，用户可自行扩展，建议封装成JSON字符串
      *
-     * @throws Exception
+     * @return mixed
+     * @throws GuzzleException
+     * @throws cccdlException
      */
     public function updateUserInfo(string $accid, array $options)
     {
@@ -125,9 +133,10 @@ class User extends Base
      * @param array $accids 用户帐号（一次查询最多为200）
      *
      * @return array
-     * @throws Exception
+     * @throws GuzzleException
+     * @throws cccdlException
      */
-    public function getUserInfos(array $accids)
+    public function getUserInfos(array $accids): array
     {
         return $this->post('user/getUinfos.action', ['accids' => json_encode($accids)]);
     }
@@ -137,9 +146,11 @@ class User extends Base
      * 设置桌面端在线时，移动端是否需要推送
      *
      * @param string $accid 用户帐号
-     * @param bool $donnopOpen 桌面端在线时，移动端是否不推送：true:移动端不需要推送，false:移动端需要推送
+     * @param bool   $donnopOpen 桌面端在线时，移动端是否不推送：true:移动端不需要推送，false:移动端需要推送
      *
-     * @throws Exception
+     * @return mixed
+     * @throws GuzzleException
+     * @throws cccdlException
      */
     public function setDonnop(string $accid, bool $donnopOpen)
     {
@@ -151,9 +162,10 @@ class User extends Base
      * 账号全局禁言
      *
      * @param string $accid 用户帐号
-     * @param bool $mute 是否全局禁言：true：全局禁言，false:取消全局禁言
-     *
-     * @throws Exception
+     * @param bool   $mute 是否全局禁言：true：全局禁言，false:取消全局禁言
+     * @return mixed
+     * @throws GuzzleException
+     * @throws cccdlException
      */
     public function mute(string $accid, bool $mute)
     {
@@ -165,9 +177,10 @@ class User extends Base
      * 账号全局禁用音视频
      *
      * @param string $accid 用户帐号
-     * @param bool $mute 是否全局禁言：true：全局禁言，false:取消全局禁言
-     *
-     * @throws Exception
+     * @param bool   $mute 是否全局禁言：true：全局禁言，false:取消全局禁言
+     * @return mixed
+     * @throws GuzzleException
+     * @throws cccdlException
      */
     public function muteAv(string $accid, bool $mute)
     {

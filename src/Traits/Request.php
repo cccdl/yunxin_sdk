@@ -5,11 +5,16 @@ namespace cccdl\yunxin_sdk\Traits;
 
 use cccdl\yunxin_sdk\Exception\cccdlException;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 
 trait Request
 {
     protected static $timeout = 3;
 
+    /**
+     * @throws GuzzleException
+     * @throws cccdlException
+     */
     public function post($url, $param)
     {
         $time = time();
