@@ -58,6 +58,7 @@ $ composer require cccdl/yunxin_sdk
 | Subscribe.php|`query()`|查询在线状态事件订阅关系|
 | Team.php|`create()`|创建群（高级群）|
 | Team.php|`add()`|拉人进群|
+| Team.php|`kick()`|踢人出群|
 
 
 
