@@ -21,6 +21,7 @@
 - 2.1.0 增加创建群组功能（高级群）
 - 2.2.0 增加 拉人进群 功能
 - 2.3.0 增加 踢人出群 功能
+- 2.4.0 增加 批量踢人出群 功能
 
 ## 安装
 > 运行环境要求PHP7.1+。
@@ -59,6 +60,7 @@ $ composer require cccdl/yunxin_sdk
 | Team.php|`create()`|创建群（高级群）|
 | Team.php|`add()`|拉人进群|
 | Team.php|`kick()`|踢人出群|
+| Team.php|`batchKick()`|批量踢人出群|
 
 
 
