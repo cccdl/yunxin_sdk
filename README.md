@@ -18,6 +18,7 @@
 - 1.1.6 增加【在线状态】订阅接口
 - 1.1.7 更新guzzlehttp/guzzle至7.0以上版本
 - 2.0.0 修改为php7严格模式
+- 2.1.0 增加创建群组功能（高级群）
 
 ## 安装
 > 运行环境要求PHP7.1+。
@@ -53,6 +54,7 @@ $ composer require cccdl/yunxin_sdk
 | Subscribe.php     | `delete()`                    | 取消在线状态事件订阅 |
 | Subscribe.php     | `batchDel()`                  | 取消全部在线状态事件订阅 |
 | Subscribe.php     | `query()`                     | 查询在线状态事件订阅关系 |
+| Team.php          | `create()`                    | 创建群（高级群） |
 
 
 
