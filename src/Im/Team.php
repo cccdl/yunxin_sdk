@@ -222,4 +222,25 @@ class Team extends Base
 
         return $this->post('team/query.action', $data);
     }
+
+    /**
+     * 获取群组详细信息
+     * 查询指定群的详细信息（群信息+成员详细信息）
+     * - ignoreInvalid: Boolean, 否    是否忽略无效的tid，默认为false。设置为true时将忽略无效tid，并在响应结果中返回无效的tid
+     * @param string $tid 群id，群唯一标识，创建群时会返回
+     * @return array
+     * @throws GuzzleException
+     * @throws cccdlException
+     */
+    public function queryDetail(string $tid): array
+    {
+        $data = [
+            'tid' => $tid,
+        ];
+
+        return $this->post('team/queryDetail.action', $data);
+    }
+
+
+
 }

@@ -66,6 +66,7 @@ $ composer require cccdl/yunxin_sdk
 | Team.php|`remove()`|解散群|
 | Team.php|`update()`|编辑群资料|
 | Team.php|`query()`|群信息与成员列表查询|
+| Team.php|`queryDetail()`|获取群组详细信息|
 
 
 
