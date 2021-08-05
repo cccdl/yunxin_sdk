@@ -203,20 +203,22 @@ class Team extends Base
      * 查询群成员会稍微慢一些，所以如果不需要群成员列表可以只查群信息；
      * 此接口受频率控制，某个应用一分钟最多查询30次，超过会返回416，并且被屏蔽一段时间；
      * 群成员的群列表信息中增加管理员成员admins的返回。
+     * - ignoreInvalid: Boolean, 否    是否忽略无效的tid，默认为false。设置为true时将忽略无效tid，并在响应结果中返回无效的tid
      * @param array $tids 网易云信服务器产生，群唯一标识，创建群时会返回，最大长度128字符
-     * @param int    $ope 1表示带上群成员列表，0表示不带群成员列表，只返回群信息
-     * @param bool   $ignoreInvalid 是否忽略无效的tid，默认为false。设置为true时将忽略无效tid，并在响应结果中返回无效的tid
+     * @param int   $ope 1表示带上群成员列表，0表示不带群成员列表，只返回群信息
+     * @param array $options
      * @return array
      * @throws GuzzleException
      * @throws cccdlException
      */
-    public function query(array $tids, int $ope, bool $ignoreInvalid = false): array
+    public function query(array $tids, int $ope, array $options = []): array
     {
         $data = [
             'tids' => json_encode($tids),
-            'ope' => $ope,
-            'ignoreInvalid' => $ignoreInvalid,
+            'ope' => $ope
         ];
+
+        $data = array_merge($data, $options);
 
         return $this->post('team/query.action', $data);
     }
