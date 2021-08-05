@@ -111,7 +111,7 @@ class Team extends Base
 
         $data = array_merge($data, $options);
 
-        return $this->post('team/add.action', $data);
+        return $this->post('team/kick.action', $data);
 
     }
 }
