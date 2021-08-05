@@ -139,4 +139,27 @@ class Team extends Base
 
         return $this->post('team/kick.action', $data);
     }
+
+    /**
+     * 解散群
+     * 删除整个群，会解散该群，需要提供群主accid，谨慎操作！
+     * - attach          : String , 否    自定义扩展字段，最大长度512
+     * @param string $tid 网易云信服务器产生，群唯一标识，创建群时会返回，最大长度128字符
+     * @param string $owner 用户帐号，最大长度32字符，按照群属性invitemode传入
+     * @param array  $options
+     * @return array
+     * @throws GuzzleException
+     * @throws cccdlException
+     */
+    public function remove(string $tid, string $owner, array $options = []): array
+    {
+        $data = [
+            'tid' => $tid,
+            'owner' => $owner,
+        ];
+
+        $data = array_merge($data, $options);
+
+        return $this->post('team/kick.action', $data);
+    }
 }

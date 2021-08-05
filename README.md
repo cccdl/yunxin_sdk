@@ -61,6 +61,7 @@ $ composer require cccdl/yunxin_sdk
 | Team.php|`add()`|拉人进群|
 | Team.php|`kick()`|踢人出群|
 | Team.php|`batchKick()`|批量踢人出群|
+| Team.php|`remove()`|解散群|
 
 
 
