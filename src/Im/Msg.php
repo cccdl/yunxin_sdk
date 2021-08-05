@@ -17,6 +17,7 @@ class Msg extends Base
     const MSG_TYPE_VIDEO = 3; // 视频消息
     const MSG_TYPE_LOCATION = 4; // 地理位置消息
     const MSG_TYPE_FILE = 6; // 文件消息
+    const MSG_TYPE_TIP = 10; // 提示tip消息
     const MSG_TYPE_CUSTOM = 100; // 自定义消息
 
     /**
