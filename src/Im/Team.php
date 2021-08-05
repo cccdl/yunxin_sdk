@@ -40,7 +40,7 @@ class Team extends Base
      * @param array  $members 邀请的群成员列表。\["aaa", "bbb"\](JSONArray对应的accid，如果解析出错会报414)，members与owner总和上限为200。members中无需再加owner自己的账号。
      * @param string $msg 邀请发送的文字，最大长度150字符
      * @param int    $magree 管理后台建群时，0不需要被邀请人同意加入群，1需要被邀请人同意才可以加入群。其它会返回414
-     * @param int    $joinmode
+     * @param int    $joinmode 群建好后，sdk操作时，0不用验证，1需要验证, 2不允许任何人加入。其它返回414
      * @return array
      * @throws GuzzleException
      * @throws cccdlException
