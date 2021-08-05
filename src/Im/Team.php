@@ -35,7 +35,7 @@ class Team extends Base
      * @param string $msg 邀请发送的文字，最大长度150字符
      * @param int    $magree 管理后台建群时，0不需要被邀请人同意加入群，1需要被邀请人同意才可以加入群。其它会返回414
      * @param int    $joinmode 群建好后，sdk操作时，0不用验证，1需要验证, 2不允许任何人加入。其它返回414
-     * @param array  $options
+     * @param array  $options 上述非必填参数构建的数组
      * @return array
      * @throws GuzzleException
      * @throws cccdlException
@@ -62,17 +62,18 @@ class Team extends Base
      * 1.可以批量邀请，邀请时需指定群主；
      * 2.当群成员达到上限时，再邀请某人入群返回失败；
      * 3.当群成员达到上限时，被邀请人“接受邀请"的操作也将返回失败。
+     * - attach          : String , 否    自定义扩展字段，最大长度512
      * @param string $tid 网易云信服务器产生，群唯一标识，创建群时会返回，最大长度128字符
      * @param string $owner 用户帐号，最大长度32字符，按照群属性invitemode传入
      * @param array  $members \["aaa","bbb"\](JSONArray对应的accid，如果解析出错会报414)，一次最多拉200个成员
      * @param int    $magree 管理后台建群时，0不需要被邀请人同意加入群，1需要被邀请人同意才可以加入群。其它会返回414
      * @param string $msg 邀请发送的文字，最大长度150字符
-     * @param string  $attach 自定义扩展字段，最大长度512
+     * @param array  $options 上述非必填参数构建的数组
      * @return array
      * @throws GuzzleException
      * @throws cccdlException
      */
-    public function add(string $tid, string $owner, array $members, int $magree, string $msg, string $attach = ''): array
+    public function add(string $tid, string $owner, array $members, int $magree, string $msg, array $options = []): array
     {
         $data = [
             'tid' => $tid,
@@ -80,9 +81,9 @@ class Team extends Base
             'members' => json_encode($members),
             'msg' => $msg,
             'magree' => $magree,
-            'attach'=>$attach
         ];
 
+        $data = array_merge($data, $options);
 
         return $this->post('team/add.action', $data);
 
