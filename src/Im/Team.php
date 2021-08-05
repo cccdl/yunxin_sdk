@@ -205,7 +205,7 @@ class Team extends Base
      * 群成员的群列表信息中增加管理员成员admins的返回。
      * @param string $tid 网易云信服务器产生，群唯一标识，创建群时会返回，最大长度128字符
      * @param int    $ope 1表示带上群成员列表，0表示不带群成员列表，只返回群信息
-     * @param bool   $ignoreInvalid 上述非必填参数构建的数组,请查看注释内容备注
+     * @param bool   $ignoreInvalid 是否忽略无效的tid，默认为false。设置为true时将忽略无效tid，并在响应结果中返回无效的tid
      * @return array
      * @throws GuzzleException
      * @throws cccdlException
