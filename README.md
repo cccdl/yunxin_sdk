@@ -1,4 +1,4 @@
-#  网易云信 SDK for PHP  !
+# 网易云信 SDK for PHP  !
 
 ### 主要新特性
 
@@ -8,6 +8,7 @@
 * 所有方法的实例详细使用examples【1.1.6版本后接口增加，陆续更新中】
 
 ### 更新日志
+
 - 1.0.7 发送普通消息增加推送字段 “pushcontent”
 - 1.0.8 批量发送点对点普通消息 增加推送字段 “pushcontent”
 - 1.0.9 批量发送消息，返回结果
@@ -23,10 +24,13 @@
 - 2.3.0 增加 踢人出群 功能
 - 2.4.0 增加 批量踢人出群 功能、增加解散群功能
 - 2.5.0 增加 编辑群资料
-- 2.6.0 增加 群信息与成员列表查询
+- 2.6.0-2.6.2 增加 群信息与成员列表查询
+- 2.7.0 增加 获取群组详细信息
 
 ## 安装
+
 > 运行环境要求PHP7.1+。
+
 ```shell
 $ composer require cccdl/yunxin_sdk
 ```
@@ -68,11 +72,9 @@ $ composer require cccdl/yunxin_sdk
 | Team.php|`query()`|群信息与成员列表查询|
 | Team.php|`queryDetail()`|获取群组详细信息|
 
-
-
 ### 快速使用
-在您开始之前，您需要注册网易云信并获取您的[凭证](https://dev.yunxin.163.com)。
 
+在您开始之前，您需要注册网易云信并获取您的[凭证](https://dev.yunxin.163.com)。
 
 ```php
 <?php
@@ -89,8 +91,8 @@ $res = $im->create('100001');
 [网易云信文档中心](https://dev.yunxin.163.com/)
 
 ## 问题
-[提交 Issue](https://github.com/cccdl/yunxin_sdk/issues)，不符合指南的问题可能会立即关闭。
 
+[提交 Issue](https://github.com/cccdl/yunxin_sdk/issues)，不符合指南的问题可能会立即关闭。
 
 ## Contributing
 
@@ -100,7 +102,8 @@ You can contribute in one of three ways:
 2. Answer questions or fix bugs on the [issue tracker](https://github.com/cccdl/yunxin_sdk/issues).
 3. Contribute new features or update the wiki.
 
-_The code contribution process is not very formal. You just need to make sure that you follow the PSR-0, PSR-1, and PSR-2 coding guidelines. Any new code contributions must be accompanied by unit tests where applicable._
+_The code contribution process is not very formal. You just need to make sure that you follow the PSR-0, PSR-1, and
+PSR-2 coding guidelines. Any new code contributions must be accompanied by unit tests where applicable._
 
 ## License
 
