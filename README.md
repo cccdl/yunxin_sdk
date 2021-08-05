@@ -19,6 +19,7 @@
 - 1.1.7 更新guzzlehttp/guzzle至7.0以上版本
 - 2.0.0 修改为php7严格模式
 - 2.1.0 增加创建群组功能（高级群）
+- 2.2.0 增加 拉人进群 功能
 
 ## 安装
 > 运行环境要求PHP7.1+。
@@ -28,33 +29,34 @@ $ composer require cccdl/yunxin_sdk
 
 ### 接口对应文件
 
-| 文件               | 方法          |  说明      |
-| ------------------|--------------|------------|
-| Friend.php        | `add()`                       | 加好友，两人保持好友关系 |
-| Friend.php        | `update()`                    | 更新好友相关信息 |
-| Friend.php        | `delete()`                    | 删除好友 |
-| Friend.php        | `get()`                       | 获取好友关系【查询某时间点起到现在有更新的双向好友】 |
-| Friend.php        | `setSpecialRelation()`        | 设置黑名单/静音 |
-| Friend.php        | `listBlackAndMuteList()`      | 设置黑名单/静音 |
-| User.php          | `create()`                    | 创建网易云通信ID |
-| User.php          | `update()`                    | 更新网易云通信token |
-| User.php          | `block()`                     | 封禁网易云通信ID |
-| User.php          | `unblock()`                   | 解禁网易云通信ID |
-| User.php          | `updateUserInfo()`            | 更新用户名片 |
-| User.php          | `getUserInfos()`              | 获取用户名片，可以批量 |
-| User.php          | `setDonnop()`                 | 设置桌面端在线时，移动端是否需要推送 |
-| User.php          | `mute()`                      | 账号全局禁言 |
-| User.php          | `muteAv()`                    | 账号全局禁用音视频 |
-| Msg.php           | `sendMsg()`                   | 发送普通消息 |
-| Msg.php           | `sendBatchMsg()`              | 批量发送点对点普通消息 |
-| Msg.php           | `sendAttachMsg()`             | 发送自定义系统通知 |
-| Msg.php           | `sendBatchAttachMsg()`        | 批量发送点对点自定义系统通知 |
-| Msg.php           | `broadcastMsg()`              | 对在应用内的用户发送广播消息 |
-| Subscribe.php     | `add()`                       | 增加订阅在线状态事件 |
-| Subscribe.php     | `delete()`                    | 取消在线状态事件订阅 |
-| Subscribe.php     | `batchDel()`                  | 取消全部在线状态事件订阅 |
-| Subscribe.php     | `query()`                     | 查询在线状态事件订阅关系 |
-| Team.php          | `create()`                    | 创建群（高级群） |
+| 文件|方法|说明|
+|---|---|---|
+| Friend.php|`add()`|加好友，两人保持好友关系|
+| Friend.php|`update()`|更新好友相关信息|
+| Friend.php|`delete()`|删除好友|
+| Friend.php|`get()`|获取好友关系【查询某时间点起到现在有更新的双向好友】|
+| Friend.php|`setSpecialRelation()`|设置黑名单/静音|
+| Friend.php|`listBlackAndMuteList()`|设置黑名单/静音|
+| User.php|`create()`|创建网易云通信ID|
+| User.php|`update()`|更新网易云通信token|
+| User.php|`block()`|封禁网易云通信ID|
+| User.php|`unblock()`|解禁网易云通信ID|
+| User.php|`updateUserInfo()`|更新用户名片|
+| User.php|`getUserInfos()`|获取用户名片，可以批量|
+| User.php|`setDonnop()`设置桌面端在线时，移动端是否需要推送|
+| User.php|`mute()`|账号全局禁言|
+| User.php|`muteAv()`|账号全局禁用音视频|
+| Msg.php|`sendMsg()`|发送普通消息|
+| Msg.php|`sendBatchMsg()`|批量发送点对点普通消息|
+| Msg.php|`sendAttachMsg()`|发送自定义系统通知|
+| Msg.php|`sendBatchAttachMsg()`|批量发送点对点自定义系统通知|
+| Msg.php|`broadcastMsg()`|对在应用内的用户发送广播消息|
+| Subscribe.php|`add()`|增加订阅在线状态事件|
+| Subscribe.php|`delete()`|取消在线状态事件订阅|
+| Subscribe.php|`batchDel()`|取消全部在线状态事件订阅|
+| Subscribe.php|`query()`|查询在线状态事件订阅关系|
+| Team.php|`create()`|创建群（高级群）|
+| Team.php|`add()`|拉人进群|
 
 
 
