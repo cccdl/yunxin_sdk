@@ -35,7 +35,7 @@ class Team extends Base
      * @param string $msg 邀请发送的文字，最大长度150字符
      * @param int    $magree 管理后台建群时，0不需要被邀请人同意加入群，1需要被邀请人同意才可以加入群。其它会返回414
      * @param int    $joinmode 群建好后，sdk操作时，0不用验证，1需要验证, 2不允许任何人加入。其它返回414
-     * @param array  $options 上述非必填参数构建的数组
+     * @param array  $options 上述非必填参数构建的数组,请查看注释内容备注
      * @return array
      * @throws GuzzleException
      * @throws cccdlException
@@ -68,7 +68,7 @@ class Team extends Base
      * @param array  $members \["aaa","bbb"\](JSONArray对应的accid，如果解析出错会报414)，一次最多拉200个成员
      * @param int    $magree 管理后台建群时，0不需要被邀请人同意加入群，1需要被邀请人同意才可以加入群。其它会返回414
      * @param string $msg 邀请发送的文字，最大长度150字符
-     * @param array  $options 上述非必填参数构建的数组
+     * @param array  $options 上述非必填参数构建的数组,请查看注释内容备注
      * @return array
      * @throws GuzzleException
      * @throws cccdlException
@@ -96,7 +96,7 @@ class Team extends Base
      * @param string $tid 网易云信服务器产生，群唯一标识，创建群时会返回，最大长度128字符
      * @param string $owner 用户帐号，最大长度32字符，按照群属性invitemode传入
      * @param string $member 被移除人的accid，用户账号，最大长度32字符;注：member或members任意提供一个，优先使用member参数
-     * @param array  $options 上述非必填参数构建的数组
+     * @param array  $options 上述非必填参数构建的数组,请查看注释内容备注
      * @return array
      * @throws GuzzleException
      * @throws cccdlException
@@ -122,7 +122,7 @@ class Team extends Base
      * @param string $tid 网易云信服务器产生，群唯一标识，创建群时会返回，最大长度128字符
      * @param string $owner 用户帐号，最大长度32字符，按照群属性invitemode传入
      * @param array $members ["aaa","bbb"]（JSONArray对应的accid，如果解析出错，会报414）一次最多操作200个accid; 注：member或members任意提供一个，优先使用member参数
-     * @param array  $options 上述非必填参数构建的数组
+     * @param array  $options 上述非必填参数构建的数组,请查看注释内容备注
      * @return array
      * @throws GuzzleException
      * @throws cccdlException
@@ -180,7 +180,7 @@ class Team extends Base
      * attach          : String , 否	自定义扩展字段，最大长度512
      * @param string $tid 网易云信服务器产生，群唯一标识，创建群时会返回，最大长度128字符
      * @param string $owner 群主用户帐号，最大长度32字符
-     * @param array  $options 上述非必填参数构建的数组
+     * @param array  $options 上述非必填参数构建的数组,请查看注释内容备注
      * @return array
      * @throws GuzzleException
      * @throws cccdlException
