@@ -44,7 +44,7 @@ class Team extends Base
      * @throws GuzzleException
      * @throws cccdlException
      */
-    public function create(string $tname, string $owner, array $members, string $msg, int $magree): array
+    public function create(string $tname, string $owner, array $members, string $msg, int $magree,int $joinmode): array
     {
         $data = [
             'tname' => $tname,
@@ -52,6 +52,7 @@ class Team extends Base
             'members' => json_encode($members),
             'msg' => $msg,
             'magree' => $magree,
+            'joinmode' => $joinmode,
         ];
 
 
