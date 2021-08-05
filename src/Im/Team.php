@@ -88,4 +88,30 @@ class Team extends Base
         return $this->post('team/add.action', $data);
 
     }
+
+    /**
+     * 踢人出群
+     * 1.高级群踢人出群，需要提供群主accid以及要踢除人的accid。
+     * - attach          : String , 否    自定义扩展字段，最大长度512
+     * @param string $tid 网易云信服务器产生，群唯一标识，创建群时会返回，最大长度128字符
+     * @param string $owner 用户帐号，最大长度32字符，按照群属性invitemode传入
+     * @param string  $member 被移除人的accid，用户账号，最大长度32字符;注：member或members任意提供一个，优先使用member参数
+     * @param array  $options 上述非必填参数构建的数组
+     * @return array
+     * @throws GuzzleException
+     * @throws cccdlException
+     */
+    public function kick(string $tid, string $owner, string $member, array $options = []): array
+    {
+        $data = [
+            'tid' => $tid,
+            'owner' => $owner,
+            'member' => $member,
+        ];
+
+        $data = array_merge($data, $options);
+
+        return $this->post('team/add.action', $data);
+
+    }
 }
