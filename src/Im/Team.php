@@ -274,7 +274,7 @@ class Team extends Base
      * @param string $tid 网易云信服务器产生，群唯一标识，创建群时会返回，最大长度128字符
      * @param string $owner 群主用户帐号，最大长度32字符
      * @param string $newowner 新群主帐号，最大长度32字符
-     * @param int  $leave 1:群主解除群主后离开群，2：群主解除群主后成为普通成员。其它414
+     * @param int    $leave 1:群主解除群主后离开群，2：群主解除群主后成为普通成员。其它414
      * @param array  $options 上述非必填参数构建的数组,请查看注释内容备注
      * @return array
      * @throws GuzzleException
@@ -292,5 +292,119 @@ class Team extends Base
         $data = array_merge($data, $options);
 
         return $this->post('team/changeOwner.action', $data);
+    }
+
+    /**
+     * 任命管理员
+     * 提升普通成员为群管理员，可以批量，但是一次添加最多不超过10个人。
+     * attach：    String    否    自定义扩展字段，最大长度512
+     * @param string $tid 网易云信服务器产生，群唯一标识，创建群时会返回，最大长度128字符
+     * @param string $owner 群主用户帐号，最大长度32字符
+     * @param array  $members \["aaa","bbb"\](JSONArray对应的accid，如果解析出错会报414)，长度最大1024字符（一次添加最多10个管理员）
+     * @param array  $options
+     * @return array
+     * @throws GuzzleException
+     * @throws cccdlException
+     */
+    public function addManager(string $tid, string $owner, array $members, array $options = []): array
+    {
+        $data = [
+            'tid' => $tid,
+            'owner' => $owner,
+            'members' => json_encode($members),
+        ];
+
+        $data = array_merge($data, $options);
+
+        return $this->post('team/addManager.action', $data);
+    }
+
+    /**
+     * 移除管理员
+     * 解除管理员身份，可以批量，但是一次解除最多不超过10个人
+     * attach：    String    否    自定义扩展字段，最大长度512
+     * @param string $tid 网易云信服务器产生，群唯一标识，创建群时会返回，最大长度128字符
+     * @param string $owner 群主用户帐号，最大长度32字符
+     * @param array  $members \["aaa","bbb"\](JSONArray对应的accid，如果解析出错会报414)，长度最大1024字符（一次添加最多10个管理员）
+     * @param array  $options
+     * @return array
+     * @throws GuzzleException
+     * @throws cccdlException
+     */
+    public function removeManager(string $tid, string $owner, array $members, array $options = []): array
+    {
+        $data = [
+            'tid' => $tid,
+            'owner' => $owner,
+            'members' => json_encode($members),
+        ];
+
+        $data = array_merge($data, $options);
+
+        return $this->post('team/removeManager.action', $data);
+    }
+
+    /**
+     * 获取某用户所加入的群信息
+     * 获取某个用户所加入高级群的群信息
+     * attach：    String    否    自定义扩展字段，最大长度512
+     * @param string $accid 网易云信服务器产生，群唯一标识，创建群时会返回，最大长度128字符
+     * @return array
+     * @throws GuzzleException
+     * @throws cccdlException
+     */
+    public function joinTeams(string $accid): array
+    {
+        $data = [
+            'accid' => $accid,
+        ];
+        return $this->post('team/joinTeams.action', $data);
+    }
+
+    /**
+     * 修改群昵称
+     * 修改指定账号在群内的昵称
+     * nick：    String    否    accid 对应的群昵称，最大长度32字符
+     * custom：    String    否    自定义扩展字段，最大长度1024字节
+     * @param string $tid 群唯一标识，创建群时网易云信服务器产生并返回
+     * @param string $owner 群主 accid
+     * @param string $accid 要修改群昵称的群成员 accid
+     * @param array  $options
+     * @return array
+     * @throws GuzzleException
+     * @throws cccdlException
+     */
+    public function updateTeamNick(string $tid, string $owner, string $accid, array $options = []): array
+    {
+        $data = [
+            'tid' => $tid,
+            'owner' => $owner,
+            'accid' => $accid,
+        ];
+
+        $data = array_merge($data, $options);
+
+        return $this->post('team/updateTeamNick.action', $data);
+    }
+
+    /**
+     * 修改消息提醒开关
+     * 高级群修改消息提醒开关
+     * @param string $tid 群唯一标识，创建群时网易云信服务器产生并返回
+     * @param string $accid 要操作的群成员accid
+     * @param int    $ope 1：关闭消息提醒，2：打开消息提醒，其他值无效
+     * @return array
+     * @throws GuzzleException
+     * @throws cccdlException
+     */
+    public function muteTeam(string $tid, string $accid, int $ope): array
+    {
+        $data = [
+            'tid' => $tid,
+            'accid' => $accid,
+            'ope' => $ope,
+        ];
+
+        return $this->post('team/muteTeam.action', $data);
     }
 }

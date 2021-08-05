@@ -27,6 +27,7 @@
 - 2.6.0-2.6.2 增加 群信息与成员列表查询
 - 2.7.0 增加 获取群组详细信息
 - 2.8.0 增加 获取群组已读消息的已读详情信息、移交群主
+- 2.9.0 增加 任命管理员、移除管理员、获取某用户所加入的群信息、修改群昵称、 修改消息提醒开关
 
 ## 安装
 
@@ -74,6 +75,11 @@ $ composer require cccdl/yunxin_sdk
 | Team.php|`queryDetail()`|获取群组详细信息|
 | Team.php|`getMarkReadInfo()`|获取群组已读消息的已读详情信息|
 | Team.php|`changeOwner()`|移交群主|
+| Team.php|`addManager()`|任命管理员|
+| Team.php|`removeManager()`|移除管理员|
+| Team.php|`joinTeams()`|获取某用户所加入的群信息|
+| Team.php|`updateTeamNick()`|修改群昵称|
+| Team.php|`muteTeam()`|修改消息提醒开关|
 
 ### 快速使用
 
