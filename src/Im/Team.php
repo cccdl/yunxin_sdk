@@ -242,5 +242,55 @@ class Team extends Base
     }
 
 
+    /**
+     * 获取群组已读消息的已读详情信息
+     * - snapshot:Boolean,    否    是否返回已读、未读成员的accid列表，默认为false
+     * @param string $tid 群id，群唯一标识，创建群时会返回
+     * @param string $msgid 发送群已读业务消息时服务器返回的消息ID
+     * @param string $fromAccid 消息发送者账号
+     * @param array  $options
+     * @return array
+     * @throws GuzzleException
+     * @throws cccdlException
+     */
+    public function getMarkReadInfo(string $tid, string $msgid, string $fromAccid, array $options = []): array
+    {
+        $data = [
+            'tid' => $tid,
+            'msgid' => $msgid,
+            'fromAccid' => $fromAccid,
+        ];
 
+        $data = array_merge($data, $options);
+
+        return $this->post('team/getMarkReadInfo.action', $data);
+    }
+
+    /**
+     * 移交群主
+     * 转换群主身份；
+     * 群主可以选择离开此群，还是留下来成为普通成员。
+     * attach：    String    否    自定义扩展字段，最大长度512
+     * @param string $tid 网易云信服务器产生，群唯一标识，创建群时会返回，最大长度128字符
+     * @param string $owner 群主用户帐号，最大长度32字符
+     * @param string $newowner 新群主帐号，最大长度32字符
+     * @param int  $leave 1:群主解除群主后离开群，2：群主解除群主后成为普通成员。其它414
+     * @param array  $options 上述非必填参数构建的数组,请查看注释内容备注
+     * @return array
+     * @throws GuzzleException
+     * @throws cccdlException
+     */
+    public function changeOwner(string $tid, string $owner, string $newowner, int $leave, array $options = []): array
+    {
+        $data = [
+            'tid' => $tid,
+            'owner' => $owner,
+            'newowner' => $newowner,
+            'leave' => $leave,
+        ];
+
+        $data = array_merge($data, $options);
+
+        return $this->post('team/changeOwner.action', $data);
+    }
 }

@@ -26,6 +26,7 @@
 - 2.5.0 增加 编辑群资料
 - 2.6.0-2.6.2 增加 群信息与成员列表查询
 - 2.7.0 增加 获取群组详细信息
+- 2.8.0 增加 获取群组已读消息的已读详情信息、移交群主
 
 ## 安装
 
@@ -71,6 +72,8 @@ $ composer require cccdl/yunxin_sdk
 | Team.php|`update()`|编辑群资料|
 | Team.php|`query()`|群信息与成员列表查询|
 | Team.php|`queryDetail()`|获取群组详细信息|
+| Team.php|`getMarkReadInfo()`|获取群组已读消息的已读详情信息|
+| Team.php|`changeOwner()`|移交群主|
 
 ### 快速使用
 
