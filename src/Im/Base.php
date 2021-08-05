@@ -12,13 +12,13 @@ class Base
      * 请求域名
      * @var string
      */
-    private $baseUrl = 'https://api.netease.im/nimserver/';
+    protected $baseUrl = 'https://api.netease.im/nimserver/';
 
     /**
      * 开发者平台分配的appkey
      * @var
      */
-    private $AppKey;
+    protected $AppKey;
 
     /**
      * 密钥
@@ -30,7 +30,7 @@ class Base
      * 随机数（最大长度128个字符）
      * @var
      */
-    private $Nonce;
+    protected $Nonce;
 
     /**
      * SHA1(AppSecret + Nonce + CurTime)，三个参数拼接的字符串，进行SHA1哈希计算，转化成16进制字符(String，小写)
