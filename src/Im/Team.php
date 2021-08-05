@@ -301,7 +301,7 @@ class Team extends Base
      * @param string $tid 网易云信服务器产生，群唯一标识，创建群时会返回，最大长度128字符
      * @param string $owner 群主用户帐号，最大长度32字符
      * @param array  $members \["aaa","bbb"\](JSONArray对应的accid，如果解析出错会报414)，长度最大1024字符（一次添加最多10个管理员）
-     * @param array  $options
+     * @param array  $options 上述非必填参数构建的数组,请查看注释内容备注
      * @return array
      * @throws GuzzleException
      * @throws cccdlException
@@ -326,7 +326,7 @@ class Team extends Base
      * @param string $tid 网易云信服务器产生，群唯一标识，创建群时会返回，最大长度128字符
      * @param string $owner 群主用户帐号，最大长度32字符
      * @param array  $members \["aaa","bbb"\](JSONArray对应的accid，如果解析出错会报414)，长度最大1024字符（一次添加最多10个管理员）
-     * @param array  $options
+     * @param array  $options 上述非必填参数构建的数组,请查看注释内容备注
      * @return array
      * @throws GuzzleException
      * @throws cccdlException
@@ -369,7 +369,7 @@ class Team extends Base
      * @param string $tid 群唯一标识，创建群时网易云信服务器产生并返回
      * @param string $owner 群主 accid
      * @param string $accid 要修改群昵称的群成员 accid
-     * @param array  $options
+     * @param array  $options 上述非必填参数构建的数组,请查看注释内容备注
      * @return array
      * @throws GuzzleException
      * @throws cccdlException
@@ -406,5 +406,99 @@ class Team extends Base
         ];
 
         return $this->post('team/muteTeam.action', $data);
+    }
+
+    /**
+     * 禁言群成员
+     * 高级群禁言群成员
+     * - attach:    String    否    自定义扩展字段，最大长度512
+     * @param string $tid 群唯一标识，创建群时网易云信服务器产生并返回
+     * @param string $owner 群主accid
+     * @param string $accid 禁言对象的accid
+     * @param int    $mute 1-禁言，0-解禁
+     * @param array  $options 上述非必填参数构建的数组,请查看注释内容备注
+     * @return array
+     * @throws GuzzleException
+     * @throws cccdlException
+     */
+    public function muteTlist(string $tid, string $owner, string $accid, int $mute,array $options = []): array
+    {
+        $data = [
+            'tid' => $tid,
+            'owner' => $owner,
+            'accid' => $accid,
+            'mute' => $mute,
+        ];
+
+        $data = array_merge($data, $options);
+
+        return $this->post('team/muteTlist.action', $data);
+    }
+
+    /**
+     * 主动退群
+     * 高级群主动退群
+     * - attach:    String    否    自定义扩展字段，最大长度512
+     * @param string $tid 群唯一标识，创建群时网易云信服务器产生并返回
+     * @param string $accid 退群的accid
+     * @param array  $options 上述非必填参数构建的数组,请查看注释内容备注
+     * @return array
+     * @throws GuzzleException
+     * @throws cccdlException
+     */
+    public function leave(string $tid, string $accid,array $options = []): array
+    {
+        $data = [
+            'tid' => $tid,
+            'accid' => $accid,
+        ];
+
+        $data = array_merge($data, $options);
+
+        return $this->post('team/leave.action', $data);
+    }
+
+    /**
+     * 将群组整体禁言
+     * 禁言群组，普通成员不能发送消息，创建者和管理员可以发送消息
+     * mute     : String , 否    true:禁言，false:解禁(mute和muteType至少提供一个，都提供时按mute处理)
+     * muteType : int    , 否    禁言类型 0: 解除禁言，1: 禁言普通成员 3:禁言整个群(包括群主)
+     * attach   : String , 否    自定义扩展字段，最大长度512
+     * @param string $tid 群唯一标识，创建群时网易云信服务器产生并返回
+     * @param string $owner 群主的accid
+     * @param array  $options 上述非必填参数构建的数组,请查看注释内容备注
+     * @return array
+     * @throws GuzzleException
+     * @throws cccdlException
+     */
+    public function muteTlistAll(string $tid, string $owner,array $options = []): array
+    {
+        $data = [
+            'tid' => $tid,
+            'owner' => $owner,
+        ];
+
+        $data = array_merge($data, $options);
+
+        return $this->post('team/muteTlistAll.action', $data);
+    }
+
+    /**
+     * 获取群组禁言列表
+     * 获取群组禁言的成员列表
+     * @param string $tid 群唯一标识，创建群时网易云信服务器产生并返回
+     * @param string $owner 群主的accid
+     * @return array
+     * @throws GuzzleException
+     * @throws cccdlException
+     */
+    public function listTeamMute(string $tid, string $owner): array
+    {
+        $data = [
+            'tid' => $tid,
+            'owner' => $owner,
+        ];
+
+        return $this->post('team/listTeamMute.action', $data);
     }
 }

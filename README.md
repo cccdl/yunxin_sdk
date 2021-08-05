@@ -29,6 +29,7 @@
 - 2.8.0 增加 获取群组已读消息的已读详情信息、移交群主
 - 2.9.0 增加 任命管理员、移除管理员、获取某用户所加入的群信息、修改群昵称、 修改消息提醒开关
 - 2.9.1 增加了普通消息tips类型 #2
+- 2.10.0 增加 禁言群成员 主动退群 获取群组禁言列表
 
 ## 安装
 
@@ -81,6 +82,9 @@ $ composer require cccdl/yunxin_sdk
 | Team.php|`joinTeams()`|获取某用户所加入的群信息|
 | Team.php|`updateTeamNick()`|修改群昵称|
 | Team.php|`muteTeam()`|修改消息提醒开关|
+| Team.php|`muteTlist()`|禁言群成员|
+| Team.php|`leave()`|主动退群|
+| Team.php|`listTeamMute()`|获取群组禁言列表|
 
 ### 快速使用
 
