@@ -132,7 +132,7 @@ class Team extends Base
         $data = [
             'tid' => $tid,
             'owner' => $owner,
-            'member' => json_encode($members),
+            'members' => json_encode($members),
         ];
 
         $data = array_merge($data, $options);
