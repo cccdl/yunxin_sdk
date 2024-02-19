@@ -31,6 +31,7 @@
 - 2.9.1 增加了普通消息tips类型 #2
 - 2.10.0 增加 禁言群成员 主动退群 获取群组禁言列表
 - 2.10.2 修复群组批量踢人传输错误参数
+- 2.11.1 增加聊天室发送消息接口
 
 ## 安装
 
@@ -42,50 +43,51 @@ $ composer require cccdl/yunxin_sdk
 
 ### 接口对应文件
 
-| 文件|方法|说明|
-|---|---|---|
-| Friend.php|`add()`|加好友，两人保持好友关系|
-| Friend.php|`update()`|更新好友相关信息|
-| Friend.php|`delete()`|删除好友|
-| Friend.php|`get()`|获取好友关系【查询某时间点起到现在有更新的双向好友】|
-| Friend.php|`setSpecialRelation()`|设置黑名单/静音|
-| Friend.php|`listBlackAndMuteList()`|设置黑名单/静音|
-| User.php|`create()`|创建网易云通信ID|
-| User.php|`update()`|更新网易云通信token|
-| User.php|`block()`|封禁网易云通信ID|
-| User.php|`unblock()`|解禁网易云通信ID|
-| User.php|`updateUserInfo()`|更新用户名片|
-| User.php|`getUserInfos()`|获取用户名片，可以批量|
-| User.php|`setDonnop()`设置桌面端在线时，移动端是否需要推送|
-| User.php|`mute()`|账号全局禁言|
-| User.php|`muteAv()`|账号全局禁用音视频|
-| Msg.php|`sendMsg()`|发送普通消息|
-| Msg.php|`sendBatchMsg()`|批量发送点对点普通消息|
-| Msg.php|`sendAttachMsg()`|发送自定义系统通知|
-| Msg.php|`sendBatchAttachMsg()`|批量发送点对点自定义系统通知|
-| Msg.php|`broadcastMsg()`|对在应用内的用户发送广播消息|
-| Subscribe.php|`add()`|增加订阅在线状态事件|
-| Subscribe.php|`delete()`|取消在线状态事件订阅|
-| Subscribe.php|`batchDel()`|取消全部在线状态事件订阅|
-| Subscribe.php|`query()`|查询在线状态事件订阅关系|
-| Team.php|`create()`|创建群（高级群）|
-| Team.php|`add()`|拉人进群|
-| Team.php|`kick()`|踢人出群|
-| Team.php|`batchKick()`|批量踢人出群|
-| Team.php|`remove()`|解散群|
-| Team.php|`update()`|编辑群资料|
-| Team.php|`query()`|群信息与成员列表查询|
-| Team.php|`queryDetail()`|获取群组详细信息|
-| Team.php|`getMarkReadInfo()`|获取群组已读消息的已读详情信息|
-| Team.php|`changeOwner()`|移交群主|
-| Team.php|`addManager()`|任命管理员|
-| Team.php|`removeManager()`|移除管理员|
-| Team.php|`joinTeams()`|获取某用户所加入的群信息|
-| Team.php|`updateTeamNick()`|修改群昵称|
-| Team.php|`muteTeam()`|修改消息提醒开关|
-| Team.php|`muteTlist()`|禁言群成员|
-| Team.php|`leave()`|主动退群|
-| Team.php|`listTeamMute()`|获取群组禁言列表|
+| 文件            |方法| 说明                         |
+|---------------|---|----------------------------|
+| Friend.php    |`add()`| 加好友，两人保持好友关系               |
+| Friend.php    |`update()`| 更新好友相关信息                   |
+| Friend.php    |`delete()`| 删除好友                       |
+| Friend.php    |`get()`| 获取好友关系【查询某时间点起到现在有更新的双向好友】 |
+| Friend.php    |`setSpecialRelation()`| 设置黑名单/静音                   |
+| Friend.php    |`listBlackAndMuteList()`| 设置黑名单/静音                   |
+| User.php      |`create()`| 创建网易云通信ID                  |
+| User.php      |`update()`| 更新网易云通信token               |
+| User.php      |`block()`| 封禁网易云通信ID                  |
+| User.php      |`unblock()`| 解禁网易云通信ID                  |
+| User.php      |`updateUserInfo()`| 更新用户名片                     |
+| User.php      |`getUserInfos()`| 获取用户名片，可以批量                |
+| User.php      |`setDonnop()`设置桌面端在线时，移动端是否需要推送|
+| User.php      |`mute()`| 账号全局禁言                     |
+| User.php      |`muteAv()`| 账号全局禁用音视频                  |
+| Msg.php       |`sendMsg()`| 发送普通消息                     |
+| Msg.php       |`sendBatchMsg()`| 批量发送点对点普通消息                |
+| Msg.php       |`sendAttachMsg()`| 发送自定义系统通知                  |
+| Msg.php       |`sendBatchAttachMsg()`| 批量发送点对点自定义系统通知             |
+| Msg.php       |`broadcastMsg()`| 对在应用内的用户发送广播消息             |
+| Subscribe.php |`add()`| 增加订阅在线状态事件                 |
+| Subscribe.php |`delete()`| 取消在线状态事件订阅                 |
+| Subscribe.php |`batchDel()`| 取消全部在线状态事件订阅               |
+| Subscribe.php |`query()`| 查询在线状态事件订阅关系               |
+| Team.php      |`create()`| 创建群（高级群）                   |
+| Team.php      |`add()`| 拉人进群                       |
+| Team.php      |`kick()`| 踢人出群                       |
+| Team.php      |`batchKick()`| 批量踢人出群                     |
+| Team.php      |`remove()`| 解散群                        |
+| Team.php      |`update()`| 编辑群资料                      |
+| Team.php      |`query()`| 群信息与成员列表查询                 |
+| Team.php      |`queryDetail()`| 获取群组详细信息                   |
+| Team.php      |`getMarkReadInfo()`| 获取群组已读消息的已读详情信息            |
+| Team.php      |`changeOwner()`| 移交群主                       |
+| Team.php      |`addManager()`| 任命管理员                      |
+| Team.php      |`removeManager()`| 移除管理员                      |
+| Team.php      |`joinTeams()`| 获取某用户所加入的群信息               |
+| Team.php      |`updateTeamNick()`| 修改群昵称                      |
+| Team.php      |`muteTeam()`| 修改消息提醒开关                   |
+| Team.php      |`muteTlist()`| 禁言群成员                      |
+| Team.php      |`leave()`| 主动退群                       |
+| Team.php      |`listTeamMute()`| 获取群组禁言列表                   |
+| Chatroom.php  |`sendMsg()`| 发送聊天室消息                    |
 
 ### 快速使用
 
