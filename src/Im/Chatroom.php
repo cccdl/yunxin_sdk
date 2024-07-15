@@ -3,6 +3,7 @@
 namespace cccdl\yunxin_sdk\Im;
 
 use cccdl\yunxin_sdk\Exception\cccdlException;
+use GuzzleHttp\Exception\GuzzleException;
 
 class Chatroom extends Base
 {
@@ -21,6 +22,7 @@ class Chatroom extends Base
      * @param int $msgType
      * @param array $options
      * @return array
+     * @throws GuzzleException
      * @throws cccdlException
      */
     public function sendMsg(int $roomId, string $fromAccid, int $msgType, array $options = []): array

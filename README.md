@@ -32,6 +32,7 @@
 - 2.10.0 增加 禁言群成员 主动退群 获取群组禁言列表
 - 2.10.2 修复群组批量踢人传输错误参数
 - 2.11.1 增加聊天室发送消息接口
+- 2.12.0 增加查询聊天室历史接口、增加单元测试目录
 
 ## 安装
 
@@ -88,6 +89,7 @@ $ composer require cccdl/yunxin_sdk
 | Team.php      |`leave()`| 主动退群                       |
 | Team.php      |`listTeamMute()`| 获取群组禁言列表                   |
 | Chatroom.php  |`sendMsg()`| 发送聊天室消息                    |
+| History.php   |`queryChatroomMsg()`| 查询聊天室历史消息                  |
 
 ### 快速使用
 
